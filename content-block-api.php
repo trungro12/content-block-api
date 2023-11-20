@@ -19,8 +19,13 @@ if (!function_exists('add_action')) {
 }
 
 const CONTENTBLOCK_API_CLASS_NAME = 'ContentBlockAPI';
+const CONTENTBLOCK_API_NAME = 'Content Block API';
 define('CONTENTBLOCK_API_URL', home_url('wp-json/content-block-api/get'));
 define('CONTENTBLOCK_API__PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('CONTENTBLOCK_API__PLUGIN_URL', plugin_dir_url(__FILE__));
 require_once(CONTENTBLOCK_API__PLUGIN_DIR . '/lib/core.php');
 add_action('init', array(CONTENTBLOCK_API_CLASS_NAME, 'init'));
+
+
+register_activation_hook( __FILE__, array( CONTENTBLOCK_API_CLASS_NAME, 'pluginActivation' ) );
+register_deactivation_hook( __FILE__, array( CONTENTBLOCK_API_CLASS_NAME, 'pluginDeactivation' ) );

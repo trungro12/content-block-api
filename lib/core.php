@@ -9,6 +9,30 @@ class ContentBlockAPI
         if (!is_admin()) return;
 
         self::addUrlItemInEditList();
+
+        require_once(CONTENTBLOCK_API__PLUGIN_DIR . '/lib/menu.php');
+        ContentBlockAPI_Menu_Admin::init();
+        self::checkRedirect();
+    }
+
+
+
+    public static function pluginActivation(){
+
+        update_option(CONTENTBLOCK_API_CLASS_NAME . '__redirected', 0);
+
+    }
+    public static function pluginDeactivation(){
+        
+    }
+
+    static function checkRedirect(){
+        $isRedirected = (int) get_option(CONTENTBLOCK_API_CLASS_NAME . '__redirected', 0);
+        if(empty($isRedirected)){
+            update_option(CONTENTBLOCK_API_CLASS_NAME . '__redirected', 1);
+            wp_safe_redirect(admin_url( 'options-general.php?page=content-block-api'));
+            die;
+        }
     }
 
     static function addRestApi()
@@ -31,6 +55,17 @@ class ContentBlockAPI
         {
 
             header('Content-Type: text/html');
+
+            $apiKeyReal = trim(get_option(CONTENTBLOCK_API_CLASS_NAME . "_apiKey"));
+
+            $apiKey = trim($data->get_header('apiKey'));
+
+            if($apiKeyReal !== $apiKey){
+                echo 'Api Key không đúng';
+                exit;
+            }
+
+
             $slug = $data->get_param('slug');
             $id = $data->get_param('id');
 
