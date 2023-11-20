@@ -50,9 +50,6 @@ class ContentBlockAPI
         add_action('admin_head-edit.php', function () {
 
             global $current_screen;
-
-            // Not our post type, exit earlier
-            // You can remove this if condition if you don't have any specific post type to restrict to. 
             if ('content_block' != $current_screen->post_type) {
                 return;
             }
