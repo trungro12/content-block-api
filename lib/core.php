@@ -68,8 +68,8 @@ class ContentBlockAPI
                             const rowActions = $(this).find('.row-actions');
                             const editButton = rowActions.find('span.edit a');
 
-                            const apiUrl = '<?php echo $apiUrl; ?>?id=' + id;
-                            const apiUrlButton = '<span class="edit"><a href="' + apiUrl + '" aria-label="API URL">API URL</a> | </span>';
+                            const apiUrl = '<?php echo $apiUrl; ?>?slug=&id=' + id;
+                            const apiUrlButton = '<span class="edit"><a target="_blank" href="' + apiUrl + '" aria-label="API URL">API URL</a> | </span>';
                             $(apiUrlButton).insertBefore(editButton);
                         });
                     });
