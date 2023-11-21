@@ -34,7 +34,7 @@ class ContentBlockAPI_Sitemap
             <?php foreach ($posts as $post) : ?>
                 <url>
                     <loc>
-                        <![CDATA[ <?php echo $post->post_name; ?> ]]>
+                        <![CDATA[ <?php echo CONTENTBLOCK_API_URL . '?slug=' . $post->post_name; ?> ]]>
                     </loc>
                     <lastmod><?php echo date("Y-m-d", get_post_timestamp($post)); ?></lastmod>
                     <changefreq>weekly</changefreq>
