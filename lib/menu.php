@@ -69,7 +69,8 @@ class ContentBlockAPI_Menu_Admin
                     <?php wp_nonce_field('saveApiKey');  ?>
 
                 </table>
-                <?php submit_button('Save') ?>
+                <?php submit_button('Save'); ?>
+                <p><b>Sitemap : <a target="_blank" href="<?php echo CONTENTBLOCK_API_URL_SITEMAP; ?>"><?php echo CONTENTBLOCK_API_URL_SITEMAP; ?></a></b></p>
             </form>
         </div>
         <script>

@@ -5,6 +5,8 @@ class ContentBlockAPI
     static function init()
     {
         self::addRestApi();
+        require_once(CONTENTBLOCK_API__PLUGIN_DIR . '/lib/sitemap.php');
+        ContentBlockAPI_Sitemap::init();
 
         if (!is_admin()) return;
 
@@ -54,7 +56,7 @@ class ContentBlockAPI
         function content_block_api_endpoint_callback($data)
         {
 
-            header('Content-Type: text/html');
+            header('Content-Type: text/html; charset=utf-8');
 
             $apiKeyReal = trim(get_option(CONTENTBLOCK_API_CLASS_NAME . "_apiKey"));
 
