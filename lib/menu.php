@@ -10,7 +10,7 @@ class ContentBlockAPI_Menu_Admin
     static function addMenuOptions()
     {
         add_action("admin_menu", function () {
-            add_options_page(CONTENTBLOCK_API_NAME, CONTENTBLOCK_API_NAME, 'administrator', 'content-block-api', 'ContentBlockAPI_Menu_Admin::__htmlMenu');
+            add_submenu_page('edit.php?post_type=content_block', CONTENTBLOCK_API_NAME, CONTENTBLOCK_API_NAME, 'administrator', 'content-block-api', 'ContentBlockAPI_Menu_Admin::__htmlMenu');
         });
     }
 
