@@ -32,7 +32,7 @@ class ContentBlockAPI
         $isRedirected = (int) get_option(CONTENTBLOCK_API_CLASS_NAME . '__redirected', 0);
         if(empty($isRedirected)){
             update_option(CONTENTBLOCK_API_CLASS_NAME . '__redirected', 1);
-            wp_safe_redirect(admin_url( 'options-general.php?page=content-block-api'));
+            wp_safe_redirect(admin_url( 'edit.php?post_type=content_block&page=content-block-api'));
             die;
         }
     }

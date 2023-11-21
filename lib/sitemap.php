@@ -11,6 +11,10 @@ class ContentBlockAPI_Sitemap
         self::addRestApi();
     }
 
+    static function fullUrlCustom($slug){
+        return "https://www.giaonhan247.com/shopping/sa/search?keywords=$slug";
+    }
+
     static function exportSitemap()
     {
         $posts = get_posts([
@@ -34,7 +38,7 @@ class ContentBlockAPI_Sitemap
             <?php foreach ($posts as $post) : ?>
                 <url>
                     <loc>
-                        <![CDATA[ <?php echo CONTENTBLOCK_API_URL . '?slug=' . $post->post_name; ?> ]]>
+                        <![CDATA[ <?php echo self::fullUrlCustom($post->post_name); ?> ]]>
                     </loc>
                     <lastmod><?php echo date("Y-m-d", get_post_timestamp($post)); ?></lastmod>
                     <changefreq>weekly</changefreq>
