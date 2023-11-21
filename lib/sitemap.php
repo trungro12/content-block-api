@@ -23,7 +23,7 @@ class ContentBlockAPI_Sitemap
     }
 
     /**
-     * @param WP_Post $posts
+     * @param WP_Post[] $posts
      */
     static function __sitemapTemplate($posts)
     {
