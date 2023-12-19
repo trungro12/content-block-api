@@ -82,7 +82,7 @@ class ContentBlockAPI
             if ($id) $shortCode .= " id=" . (int) sanitize_text_field($id);
             $shortCode .= " ]";
 
-            $h1Tag = sanitize_text_field(get_post_meta($id, '_content_block_information', true));
+            $h1Tag = trim(get_post_meta($id, '_content_block_information', true));
             $arrResult['content'] = do_shortcode($shortCode);
             $arrResult['h1_tag'] = $h1Tag;
 
