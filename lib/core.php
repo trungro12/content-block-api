@@ -67,7 +67,7 @@ class ContentBlockAPI
 
             $apiKey = trim($data->get_header('apiKey'));
 
-            if($apiKeyReal !== $apiKey){
+            if ($apiKeyReal !== $apiKey) {
                 $arrResult['error'] = 'Api Key không đúng';
                 echo json_encode($arrResult);
                 exit;
@@ -82,7 +82,13 @@ class ContentBlockAPI
             if ($id) $shortCode .= " id=" . (int) sanitize_text_field($id);
             $shortCode .= " ]";
 
-            $h1Tag = trim(get_post_meta($id, '_content_block_information', true));
+            if (!$id && $slug) {
+                $post = get_page_by_path( $slug, OBJECT, 'content_block' );
+                if($post) $id = $post->ID;
+            }
+
+
+            $h1Tag = $id ? sanitize_text_field(get_post_meta($id, '_content_block_information', true)) : '';
             $arrResult['content'] = do_shortcode($shortCode);
             $arrResult['h1_tag'] = $h1Tag;
 
