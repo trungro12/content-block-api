@@ -61,7 +61,7 @@ class ContentBlockAPI
                 'content' => ''
             ];
 
-            header('Content-Type: application/json charset=utf-8');
+            header('Content-Type: application/json; charset=utf-8');
 
             $apiKeyReal = trim(get_option(CONTENTBLOCK_API_CLASS_NAME . "_apiKey"));
 
