@@ -82,7 +82,7 @@ class ContentBlockAPI
             if ($id) $shortCode .= " id=" . (int) sanitize_text_field($id);
             $shortCode .= " ]";
 
-            if (!$id && $slug) {
+            if (empty($id) && !empty($slug)) {
                 $post = get_page_by_path( $slug, OBJECT, 'content_block' );
                 if($post) $id = $post->ID;
             }
